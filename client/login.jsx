@@ -16,7 +16,7 @@ const handleLogin = (e) => {
 
     helper.sendPost(e.target.action, {username, pass});
     return false;
-}
+};
 
 const handleSignup = (e) => {
     e.preventDefault();
@@ -38,4 +38,72 @@ const handleSignup = (e) => {
 
     helper.sendPost(e.target.action, {username, pass, pass2});
     return false;
-}
+};
+
+
+const LoginWindow = (props) => {
+    return (
+        <form id="loginForm"
+            name = "loginForm"
+            onSubmit={handleLogin}
+            action="/login"
+            method="POST"
+            className="mainForm"
+        >
+            <label htmlFor="username">Username: </label>
+            <input id="user" type="text" name="username" placeholder="username" />
+            <label htmlFor="pass">Password: </label>
+            <input id="pass" type="password" name="pass" placeholder="password" />
+            <input className="formSubmit" type="submit" value = "Sign in" />
+        </form>
+
+    );
+};
+
+const SingupWindow = (props) => {
+    return (
+        <form id="singupForm"
+            name = "singupForm"
+            onSubmit={handleSignup}
+            action="/singup"
+            method="POST"
+            className="mainForm"
+        >
+            <label htmlFor="username">Username: </label>
+            <input id="user" type="text" name="username" placeholder="username" />
+            <label htmlFor="pass">Password: </label>
+            <input id="pass" type="password" name="pass" placeholder="password" />
+            <label htmlFor="pass2">Password: </label>
+            <input id="pass2" type="password" name="pass2" placeholder="retype password" />
+            <input className="formSubmit" type="submit" value = "Sign up" />
+        </form>
+
+    );
+};
+
+
+const init = () => {
+    const loginButton = document.getElementById('loginButton');
+    const signupButton = document.getElementById('singupButton');
+
+    const root = createRoot(document.getElementById('content'));
+
+    loginButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        root.render(<LoginWindow />);
+        return false;
+    });
+
+    signupButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        root.render(<SingupWindow />);
+        return false;
+    });
+
+    root.render(<LoginWindow />);
+
+    console.log("loaded!");
+};
+
+
+window.onload = init;
