@@ -65,7 +65,7 @@ const SingupWindow = (props) => {
         <form id="singupForm"
             name = "singupForm"
             onSubmit={handleSignup}
-            action="/singup"
+            action="/signup"
             method="POST"
             className="mainForm"
         >
@@ -84,7 +84,7 @@ const SingupWindow = (props) => {
 
 const init = () => {
     const loginButton = document.getElementById('loginButton');
-    const signupButton = document.getElementById('singupButton');
+    const signupButton = document.getElementById('signupButton');
 
     const root = createRoot(document.getElementById('content'));
 
