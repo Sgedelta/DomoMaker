@@ -20,6 +20,12 @@ const DomoSchema = new mongoose.Schema({
     required: true,
     ref: 'Account',
   },
+  timesTraded: {
+    type: Number,
+    min: 0,
+    default: 0,
+    required: true,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
